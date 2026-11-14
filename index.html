@@ -1,2 +1,360 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>Loading</title></head><body>Loading</body></html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>O.Nursing — بنك أسئلة الموضوع السابع عشر: سوء استخدام المخدرات والكحول</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#7C2D3E; --burg-d:#5C1F2D; --gold:#C9A227; --gold-l:#F5ECD7;
+  --cream:#FBF7F0; --warm:#F9EFEA; --ink:#2b2b2b; --mut:#8a7a72;
+  --green:#2e7d4f; --green-bg:#e6f4ec; --red:#b3261e; --red-bg:#fdecea;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:'Tajawal',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh;}
+.wrap{max-width:760px; margin:0 auto; padding:0 18px 40px; width:100%;}
+/* header */
+header{padding:20px 0 8px; text-align:center;}
+.brand{font-family:'Great Vibes',cursive; font-size:34px; color:var(--burg); line-height:1;}
+.brand .dot{color:#FF8A5F;}
+.brand .star{color:var(--gold); font-size:20px; vertical-align:middle;}
+.sub{font-size:13px; color:var(--mut); margin-top:4px;}
+.rule{height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:12px auto 0; max-width:420px;}
+/* cards */
+.card{background:#fff; border:1px solid #ead9c9; border-radius:16px; padding:20px; margin-top:16px; box-shadow:0 2px 10px rgba(124,45,62,.06);}
+h1{font-size:21px; color:var(--burg); line-height:1.5;}
+h1 .en{font-size:15px; color:var(--mut); display:block; font-weight:500;}
+.meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+.pill{background:var(--gold-l); color:var(--burg-d); border:1px solid var(--gold); border-radius:20px; padding:4px 12px; font-size:13px; font-weight:700;}
+.pill.soft{background:var(--warm); border-color:#e5c9c0;}
+/* level filter */
+.levels{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+.lvl{border:1.5px solid var(--gold); background:#fff; color:var(--burg); border-radius:20px; padding:7px 16px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;}
+.lvl.on{background:var(--burg); color:#fff; border-color:var(--burg);}
+.btn{display:block; width:100%; background:var(--burg); color:#fff; border:none; border-radius:12px; padding:14px; font-size:17px; font-weight:800; cursor:pointer; font-family:inherit; margin-top:16px;}
+.btn:hover{background:var(--burg-d);}
+.btn.ghost{background:#fff; color:var(--burg); border:1.5px solid var(--burg); margin-top:10px;}
+.btn:disabled{opacity:.5; cursor:default;}
+.small{font-size:13px; color:var(--mut); text-align:center; margin-top:10px; line-height:1.7;}
+/* quiz */
+.prog{height:8px; background:#eee; border-radius:8px; overflow:hidden; margin-top:16px;}
+.prog i{display:block; height:100%; background:linear-gradient(90deg,var(--gold),var(--burg)); width:0%; transition:width .3s;}
+.qtop{display:flex; justify-content:space-between; align-items:center; margin-top:14px; font-size:13px; color:var(--mut); font-weight:700;}
+.badge{font-size:12px; font-weight:800; border-radius:12px; padding:3px 10px;}
+.badge.easy{background:#e6f4ec; color:var(--green);}
+.badge.med{background:#fdf3d7; color:#8a6d00;}
+.badge.hard{background:#fdecea; color:var(--red);}
+.q{font-size:18px; font-weight:700; line-height:1.8; margin-top:12px; direction:ltr; text-align:left;}
+.q .ar-note{font-size:14px; color:var(--mut); font-weight:500; direction:rtl; text-align:right; display:block; margin-top:4px;}
+.opts{margin-top:14px; display:flex; flex-direction:column; gap:10px;}
+.opt{border:1.5px solid #e5d5c8; background:#fff; border-radius:12px; padding:12px 14px; font-size:16px; cursor:pointer; text-align:left; direction:ltr; font-family:inherit; line-height:1.5;}
+.opt:hover{border-color:var(--gold);}
+.opt.correct{border-color:var(--green); background:var(--green-bg);}
+.opt.wrong{border-color:var(--red); background:var(--red-bg);}
+.opt:disabled{cursor:default;}
+.tf{display:flex; gap:10px; margin-top:14px;}
+.tf .opt{flex:1; text-align:center; font-weight:800; font-size:17px;}
+.hintbtn{background:var(--gold-l); color:var(--burg-d); border:1px solid var(--gold); border-radius:10px; padding:8px 14px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; margin-top:14px;}
+.hint{display:none; background:#fffbe6; border:1px dashed var(--gold); border-radius:10px; padding:10px 14px; margin-top:10px; font-size:14px; line-height:1.8;}
+.hint.show{display:block;}
+.explain{display:none; border-radius:10px; padding:12px 14px; margin-top:12px; font-size:14.5px; line-height:1.9;}
+.explain.show{display:block;}
+.explain.ok{background:var(--green-bg); border:1px solid var(--green);}
+.explain.no{background:var(--red-bg); border:1px solid var(--red);}
+.explain b{color:var(--burg);}
+.model{display:none; background:var(--warm); border:1px solid #e5c9c0; border-radius:10px; padding:12px 14px; margin-top:12px; font-size:14.5px; line-height:1.9; white-space:pre-line;}
+.model.show{display:block;}
+textarea{width:100%; min-height:90px; border:1.5px solid #e5d5c8; border-radius:12px; padding:12px; font-family:inherit; font-size:15px; margin-top:14px; direction:ltr;}
+/* results */
+.score-ring{width:150px; height:150px; margin:10px auto; position:relative;}
+.score-ring svg{transform:rotate(-90deg);}
+.score-ring .pct{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:800; color:var(--burg);}
+.res-line{text-align:center; font-size:16px; line-height:2;}
+.res-line b{color:var(--burg);}
+table.res{width:100%; border-collapse:collapse; margin-top:12px; font-size:14px;}
+table.res td, table.res th{border:1px solid #ead9c9; padding:8px; text-align:center;}
+table.res th{background:var(--burg); color:#fff;}
+.hidden{display:none !important;}
+footer{text-align:center; font-size:12px; color:var(--mut); margin-top:26px; line-height:1.8;}
+/* O.Nursing — QR-only: no copying, no printing */
+body{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+textarea{ -webkit-user-select:text; -moz-user-select:text; -ms-user-select:text; user-select:text; }
+#print-note{ display:none; }
+@media print{ body *{ display:none !important; } #print-note{ display:block !important; text-align:center; font-size:16px; font-weight:700; color:#7c2d3e; margin-top:40%; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="star">✦</span> O<span class="dot">.</span>Nursing <span class="star">✦</span></div>
+    <div class="sub">بنك أسئلة — الترم الثاني • تمريض الصحة النفسية</div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- HOME -->
+  <div id="home" class="card">
+    <h1>الموضوع السابع عشر: سوء استخدام المخدرات والكحول<span class="en">Topic 17 — Drug and Alcohol Misuse</span></h1>
+    <div class="meta">
+      <span class="pill">40 سؤال</span>
+      <span class="pill soft">اختيار من متعدد + صح وخطأ + مقالي</span>
+      <span class="pill soft">متدرجة: سهل ← متوسط ← صعب</span>
+    </div>
+    <p style="margin-top:12px; font-size:14.5px; line-height:1.9;">أسئلة إضافية شاملة كل أفكار الموضوع: التعريف وعلامات الاعتماد الخمسة، تقسيم الكحول (خطر / ضار / نهمي) بالأرقام، الاضطرابات الستة، النتائج وعوامل الخطر، العلاج والتدخلات النفسية بعد الـ Detox، و Al-Anon و AA — مع <b>تلميح</b> لكل سؤال وشرح بعد الإجابة.</p>
+    <div class="levels" id="levels">
+      <button class="lvl on" data-lvl="all">الكل (40)</button>
+      <button class="lvl" data-lvl="easy">سهل (15)</button>
+      <button class="lvl" data-lvl="med">متوسط (15)</button>
+      <button class="lvl" data-lvl="hard">صعب (10)</button>
+    </div>
+    <button class="btn" id="btn-start">ابدأ الأسئلة ←</button>
+    <button class="btn ghost hidden" id="btn-resume">كمّل من حيث توقفت</button>
+    <div class="small" id="home-stats"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="card hidden">
+    <div class="prog"><i id="prog-fill"></i></div>
+    <div class="qtop"><span id="q-count"></span><span id="q-badge"></span><span id="q-score"></span></div>
+    <div class="q" id="q-stem"></div>
+    <div id="q-body"></div>
+    <button class="hintbtn" id="btn-hint">💡 تلميح</button>
+    <div class="hint" id="q-hint"></div>
+    <div class="explain" id="q-explain"></div>
+    <div class="model" id="q-model"></div>
+    <button class="btn hidden" id="btn-next">السؤال التالي ←</button>
+    <button class="btn hidden" id="btn-finish">عرض النتيجة</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results" class="card hidden" style="text-align:center;">
+    <h1>النتيجة</h1>
+    <div class="score-ring">
+      <svg width="150" height="150" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="65" fill="none" stroke="#eee" stroke-width="10"/>
+        <circle id="ring-fg" cx="75" cy="75" r="65" fill="none" stroke="#7C2D3E" stroke-width="10" stroke-linecap="round" stroke-dasharray="408" stroke-dashoffset="408"/>
+      </svg>
+      <div class="pct" id="res-pct">0%</div>
+    </div>
+    <div class="res-line" id="res-line"></div>
+    <table class="res" id="res-table"></table>
+    <button class="btn" id="btn-retry">إعادة الأسئلة</button>
+    <button class="btn ghost" id="btn-home">رجوع للموضوع السابع عشر</button>
+  </div>
+
+  <footer>O.Nursing • Dr: Abdullah Shawky<br>الأسئلة من محتوى المحاضرة وأسئلة امتحانات دبلوم المعاهد الفنية الصحية<br><b style="color:#7c2d3e;">الأسئلة خاصة بـ O.Nursing — ممنوع النسخ والنقل</b></footer>
+  <div id="print-note">الأسئلة خاصة بـ O.Nursing — ممنوع النسخ والنقل</div>
+</div>
+
+<script>
+const QUESTIONS = [
+  {"id": 1, "level": "easy", "type": "mcq", "q": "Drug and alcohol misuse means the person's use has a harmful impact on:", "options": ["Physical health only.", "Physical, social and psychological health.", "Work only.", "Sleep only."], "correct": 1, "hint": "Three kinds of harm — body, people, mind.", "explain": "Misuse is use with a <b>harmful impact</b> relating to <b>physical, social and psychological</b> harms."},
+  {"id": 2, "level": "easy", "type": "mcq", "q": "A person who misuses drugs or alcohol:", "options": ["Is always dependent.", "May or may not be dependent.", "Is never dependent.", "Is always addicted for life."], "correct": 1, "hint": "Misuse ≠ dependence — dependence is possible, not certain.", "explain": "The individual <b>may or may not be dependent</b> on the drug/s or alcohol."},
+  {"id": 3, "level": "easy", "type": "mcq", "q": "Which of these is a sign of dependency?", "options": ["Compulsion to take the drug.", "Drinking water with meals.", "Sleeping 8 hours.", "Exercising daily."], "correct": 0, "hint": "Compulsion = cannot stop himself.", "explain": "<b>Compulsion to take the drug or alcohol</b> is a sign of dependency."},
+  {"id": 4, "level": "easy", "type": "mcq", "q": "Tolerance means the person:", "options": ["Stops using the drug.", "Needs more of the drug for the same effect.", "Becomes allergic.", "Forgets the drug."], "correct": 1, "hint": "Tolerance = the same dose stops working.", "explain": "<b>Tolerant to the drug or alcohol</b> — the person needs larger amounts to reach the same effect."},
+  {"id": 5, "level": "easy", "type": "mcq", "q": "Stopping the drug can cause:", "options": ["Withdrawal symptoms.", "Better sleep only.", "Weight loss only.", "Nothing at all."], "correct": 0, "hint": "Stopping → withdrawal.", "explain": "Stopping drug or alcohol use can cause <b>withdrawal symptoms</b>."},
+  {"id": 6, "level": "easy", "type": "mcq", "q": "Which of the following is a type of drug mentioned in the lecture?", "options": ["Opiates.", "Antibiotics.", "Vitamins.", "Insulin."], "correct": 0, "hint": "Opiates, stimulants, hallucinogens, cannabis.", "explain": "The lecture lists <b>opiates, stimulants, hallucinogens, and cannabis</b>."},
+  {"id": 7, "level": "easy", "type": "mcq", "q": "Hazardous drinking in men is between:", "options": ["10 and 20 units weekly.", "22 and 50 units weekly.", "Over 50 units weekly.", "5 and 10 units weekly."], "correct": 1, "hint": "Men hazardous: 22–50.", "explain": "<b>Hazardous drinking</b> — men consume between <b>22 and 50 units</b> weekly."},
+  {"id": 8, "level": "easy", "type": "mcq", "q": "Hazardous drinking in women is between:", "options": ["22 and 50 units weekly.", "15 and 35 units weekly.", "Over 50 units weekly.", "5 and 10 units weekly."], "correct": 1, "hint": "Women hazardous: 15–35.", "explain": "<b>Hazardous drinking</b> — women consume between <b>15 and 35 units</b> weekly."},
+  {"id": 9, "level": "easy", "type": "mcq", "q": "Harmful drinking in men is:", "options": ["Over 50 units weekly.", "22–50 units weekly.", "Double the safe limit in one day.", "Under 22 units weekly."], "correct": 0, "hint": "Harmful = over 50 for men.", "explain": "<b>Harmful drinking</b> — men consume <b>over 50 units</b> weekly."},
+  {"id": 10, "level": "easy", "type": "mcq", "q": "Binge drinking means:", "options": ["Drinking once a month.", "Consuming double the safe limit of units in one day.", "Drinking only at parties.", "Drinking with food."], "correct": 1, "hint": "Binge = double the safe limit, in ONE day.", "explain": "<b>Binge drinking</b> — consuming <b>double the safe limit</b> of units in <b>one day</b>."},
+  {"id": 11, "level": "easy", "type": "mcq", "q": "Opiates can cause:", "options": ["Restlessness.", "Drowsiness.", "Hallucinations only.", "Insomnia only."], "correct": 1, "hint": "Opiates slow you down — drowsiness.", "explain": "<b>Opiates</b> can cause <b>drowsiness</b>, whereas stimulants can cause restlessness."},
+  {"id": 12, "level": "easy", "type": "mcq", "q": "Stimulants can cause:", "options": ["Drowsiness.", "Restlessness.", "Sleep.", "Calmness."], "correct": 1, "hint": "Stimulants speed you up — restlessness.", "explain": "<b>Stimulants</b> can cause <b>restlessness</b>."},
+  {"id": 13, "level": "easy", "type": "mcq", "q": "Substance misuse can lead to disturbances of:", "options": ["Consciousness and perception.", "Hearing only.", "Vision only.", "Taste only."], "correct": 0, "hint": "Consciousness and perception.", "explain": "Substance misuse can lead to <b>disturbances of consciousness and perception</b>."},
+  {"id": 14, "level": "easy", "type": "mcq", "q": "Which of the following is a risk factor for substance misuse?", "options": ["Peer pressure.", "Regular exercise.", "Good sleep.", "Healthy diet."], "correct": 0, "hint": "Friends pushing you to use.", "explain": "<b>Peer pressure</b> is a risk factor for substance misuse."},
+  {"id": 15, "level": "easy", "type": "mcq", "q": "Acute detoxification is:", "options": ["A psychological therapy.", "The first recommended management intervention.", "A type of drug.", "A risk factor."], "correct": 1, "hint": "Detox comes first in the management list.", "explain": "<b>Acute detoxification</b> is the first specific intervention recommended in the treatment guidelines."},
+  {"id": 16, "level": "med", "type": "mcq", "q": "Which sign of dependency affects the person's social life?", "options": ["Compulsion to take the drug.", "Adverse impact upon social functioning.", "Tolerance.", "Withdrawal symptoms."], "correct": 1, "hint": "Social functioning = how the person lives with others.", "explain": "<b>Adverse impact upon the individual's social functioning</b> is a sign of dependency."},
+  {"id": 17, "level": "med", "type": "mcq", "q": "Harmful drinking in women is:", "options": ["Over 35 units weekly.", "15–35 units weekly.", "Over 50 units weekly.", "Double the safe limit in one day."], "correct": 0, "hint": "Women harmful: over 35.", "explain": "<b>Harmful drinking</b> — women consume <b>over 35 units</b> weekly."},
+  {"id": 18, "level": "med", "type": "mcq", "q": "Which of the following is a drug and alcohol disorder?", "options": ["Acute intoxication.", "Harmful use.", "Dependence.", "All of the above."], "correct": 3, "hint": "All three are in the list — plus withdrawal, psychotic and amnesic disorders.", "explain": "Drug and alcohol disorders include <b>acute intoxication, harmful use, dependence, withdrawal state, psychotic disorder, and amnesic disorder</b>."},
+  {"id": 19, "level": "med", "type": "mcq", "q": "Which consequence involves false perceptions and false beliefs?", "options": ["Neglect.", "Hallucinations and delusions.", "Memory impairment.", "Withdrawal."], "correct": 1, "hint": "Hallucinations = false perceptions; delusions = false beliefs.", "explain": "Substance misuse can lead to <b>hallucinations and delusions</b>."},
+  {"id": 20, "level": "med", "type": "mcq", "q": "A co-morbid mental health disorder is:", "options": ["A risk factor for substance misuse.", "A treatment for misuse.", "A type of alcohol.", "A sign of recovery."], "correct": 0, "hint": "Another mental illness alongside = higher vulnerability.", "explain": "<b>A co-morbid mental health disorder</b> is a risk factor that may increase vulnerability to substance misuse."},
+  {"id": 21, "level": "med", "type": "mcq", "q": "Childhood abuse and loss are examples of:", "options": ["Life events that increase vulnerability.", "Treatments.", "Signs of dependency.", "Types of drugs."], "correct": 0, "hint": "Life events — childhood abuse and loss.", "explain": "<b>Life events — childhood abuse and loss</b> — are risk factors for substance misuse."},
+  {"id": 22, "level": "med", "type": "mcq", "q": "Motivational enhancement therapy is:", "options": ["A risk factor.", "A recommended management intervention.", "A sign of dependency.", "A type of hallucinogen."], "correct": 1, "hint": "It is in the management list.", "explain": "<b>Motivational enhancement therapy</b> is one of the recommended specific interventions."},
+  {"id": 23, "level": "med", "type": "mcq", "q": "Medication in the management of substance misuse is used to:", "options": ["Manage cravings.", "Cause drowsiness.", "Replace detox.", "Increase tolerance."], "correct": 0, "hint": "Medication — manage cravings.", "explain": "<b>Medication</b> is used to <b>manage cravings</b>."},
+  {"id": 24, "level": "med", "type": "mcq", "q": "Harm reduction strategies are part of:", "options": ["Risk factors.", "Management.", "Signs of dependency.", "Clinical features."], "correct": 1, "hint": "Harm reduction is in both management and psychological interventions.", "explain": "<b>Harm reduction strategies</b> are recommended in management, and harm reduction is also a psychological intervention after detox."},
+  {"id": 25, "level": "med", "type": "mcq", "q": "After the detoxification phase, the nurse may deliver:", "options": ["Surgery.", "Psychological interventions.", "Antibiotics.", "Blood transfusion."], "correct": 1, "hint": "After detox comes the psychological work.", "explain": "After the <b>detoxification phase</b>, the nurse may need to deliver different types of <b>psychological interventions</b>."},
+  {"id": 26, "level": "med", "type": "mcq", "q": "Building a collaborative and therapeutic relationship is:", "options": ["A psychological intervention after detox.", "A risk factor.", "A sign of dependency.", "A drug disorder."], "correct": 0, "hint": "The first psychological intervention listed.", "explain": "<b>Build a collaborative and therapeutic relationship</b> is the first psychological intervention after detox."},
+  {"id": 27, "level": "med", "type": "mcq", "q": "Contingency approaches use:", "options": ["Punishment only.", "Incentives to change behavior.", "Medication only.", "Isolation."], "correct": 1, "hint": "Contingency = incentives.", "explain": "<b>Contingency approaches — using incentives to change behavior</b>."},
+  {"id": 28, "level": "med", "type": "mcq", "q": "The wife of an alcoholic patient benefits from attending:", "options": ["AA groups.", "Al-Anon group.", "A detox unit.", "A hospital ward."], "correct": 1, "hint": "Al-Anon is for the family — the wife.", "explain": "The nurse determines the wife is benefiting from attending <b>Al-Anon group</b>."},
+  {"id": 29, "level": "med", "type": "mcq", "q": "Signs alerting the nurse to potential delirium tremens include:", "options": ["Hypertension, changes in LOC, hallucinations.", "Hypotension, ataxia, hunger.", "Stupor, agitation, muscular rigidity.", "Hypotension, coarse hand tremors, agitation."], "correct": 0, "hint": "The book's Q1 answer: hypertension + LOC changes + hallucinations.", "explain": "Hypertension, changes in <b>LOC</b>, and <b>hallucinations</b> alert the nurse to the potential for <b>delirium tremens</b>."},
+  {"id": 30, "level": "med", "type": "mcq", "q": "Appropriate care for the patient in alcohol withdrawal includes:", "options": ["Monitor vital signs and address hallucinations therapeutically.", "Provide stimulation in the environment.", "Maintain NPO status.", "Restrain the patient."], "correct": 0, "hint": "Monitor vitals, reality orientation, address hallucinations — NOT stimulation, NOT NPO.", "explain": "Appropriate interventions: <b>monitor vital signs, provide reality orientation as appropriate, and address hallucinations therapeutically</b>."},
+  {"id": 31, "level": "hard", "type": "mcq", "q": "Which combination correctly lists the three alcohol abuse divisions?", "options": ["Hazardous, harmful, binge.", "Acute, chronic, binge.", "Mild, moderate, severe.", "Social, heavy, binge."], "correct": 0, "hint": "Hazardous / Harmful / Binge — the book's division.", "explain": "Alcohol abuse is divided into <b>hazardous, harmful, and binge</b> drinking."},
+  {"id": 32, "level": "hard", "type": "mcq", "q": "A man drinking 60 units weekly is classified as:", "options": ["Hazardous drinking.", "Harmful drinking.", "Binge drinking.", "Social drinking."], "correct": 1, "hint": "Men over 50 = harmful.", "explain": "Men consuming <b>over 50 units</b> weekly = <b>harmful drinking</b>."},
+  {"id": 33, "level": "hard", "type": "mcq", "q": "A woman drinking 20 units weekly is classified as:", "options": ["Harmful drinking.", "Hazardous drinking.", "Binge drinking.", "Abstinence."], "correct": 1, "hint": "Women 15–35 = hazardous.", "explain": "Women consuming <b>15–35 units</b> weekly = <b>hazardous drinking</b>."},
+  {"id": 34, "level": "hard", "type": "mcq", "q": "Which statement best shows effective coping after substance abuse group sessions?", "options": ["“I can say ‘no’ and leave friends who are drinking — no problem.”", "“My family will never let me go back to my old ways.”", "“I’m happy and sad, excited and scared. I have to work hard to be strong and everyone isn’t going to be as helpful as you people.”", "“I’ll do everything I’m supposed to — nothing will go wrong.”"], "correct": 2, "hint": "Realistic: mixed feelings + knows it takes hard work + others won't all help — the book's Q4 answer.", "explain": "The best answer shows realistic coping: mixed feelings, awareness that it takes <b>hard work to be strong</b>, and that <b>not everyone will be as helpful</b> as the group."},
+  {"id": 35, "level": "hard", "type": "mcq", "q": "Which is NOT a psychological intervention after detox?", "options": ["Guided self-help.", "Coping strategy work.", "Acute detoxification.", "Family and couples work."], "correct": 2, "hint": "Detox is management BEFORE the psychological work — not one of the psychological interventions.", "explain": "<b>Acute detoxification</b> is a management intervention that comes <b>before</b> the psychological interventions."},
+  {"id": 36, "level": "hard", "type": "mcq", "q": "Which of the following is a disorder caused by substance misuse, not a sign of dependency?", "options": ["Amnesic disorder.", "Compulsion to take the drug.", "Tolerance.", "Difficulty controlling use."], "correct": 0, "hint": "Amnesic disorder is in the disorders list; the other three are dependency signs.", "explain": "<b>Amnesic disorder</b> is one of the drug and alcohol disorders; compulsion, tolerance and difficulty controlling use are <b>signs of dependency</b>."},
+  {"id": 37, "level": "hard", "type": "mcq", "q": "The most important nursing action when a patient with alcohol abuse insists on leaving before a scheduled diagnostic test is to:", "options": ["Restrain the patient.", "Call security to block all areas.", "Tell the patient he cannot return.", "Call the nursing supervisor."], "correct": 3, "hint": "The book's Q5 answer — call the nursing supervisor.", "explain": "The most important nursing action is to <b>call the nursing supervisor</b>."},
+  {"id": 38, "level": "hard", "type": "mcq", "q": "A wife benefiting from Al-Anon would say:", "options": ["“I provoke my husband’s violence.”", "“I no longer feel that I deserve the beatings my husband inflicts on me.”", "“I can tolerate his destructive behavior now.”", "“I enjoy the meetings because they get me out of the house.”"], "correct": 1, "hint": "Benefit = no longer feeling she deserves the beatings.", "explain": "Benefit from Al-Anon: <b>“I no longer feel that I deserve the beatings my husband inflicts on me.”</b>"},
+  {"id": 39, "level": "hard", "type": "tf", "q": "Family history is a risk factor for substance misuse.", "correct": true, "hint": "It is in the risk factors list.", "explain": "TRUE — <b>family history</b> is a risk factor that may increase vulnerability."},
+  {"id": 40, "level": "hard", "type": "written", "q": "List the six drug and alcohol disorders.", "model": "Acute intoxication; harmful use; dependence; withdrawal state; psychotic disorder; amnesic disorder.", "hint": "Six disorders — intoxication, harmful use, dependence, withdrawal, psychotic, amnesic.", "explain": "The six disorders are: <b>acute intoxication, harmful use, dependence, withdrawal state, psychotic disorder, and amnesic disorder</b>."}
+];
+</script>
+
+<script>
+const LVL = {easy:"سهل", med:"متوسط", hard:"صعب"};
+const LVLCLS = {easy:"easy", med:"med", hard:"hard"};
+const KEY = "onursing_topic17_progress_v1";
+let selectedLvl = "all";
+let queue = [], idx = 0, score = 0, answered = 0, results = [];
+let levelStats = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+let locked = false;
+
+function $(id){ return document.getElementById(id); }
+function loadProg(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+function saveProg(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
+
+function refreshHome(){
+  const p = loadProg();
+  const done = p.done || {}, correct = p.correct || {};
+  const n = Object.keys(done).length;
+  const c = Object.keys(correct).length;
+  $("home-stats").textContent = n ? ("تقدّمك: أجبت على " + n + " سؤال من 40 — إجابات صحيحة: " + c + (p.best!=null ? (" • أفضل نتيجة: " + p.best + "%") : "")) : "ابدأ من السهل وتدرّج — كل سؤال معه تلميح وشرح.";
+  $("btn-resume").classList.toggle("hidden", !n || n>=40);
+}
+document.querySelectorAll("#levels .lvl").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    document.querySelectorAll("#levels .lvl").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); selectedLvl = b.dataset.lvl;
+  });
+});
+$("btn-start").addEventListener("click", ()=>startQuiz(false));
+$("btn-resume").addEventListener("click", ()=>startQuiz(true));
+
+function buildQueue(resume){
+  let pool = QUESTIONS.filter(q => selectedLvl==="all" || q.level===selectedLvl);
+  if(resume){
+    const p = loadProg(); const done = p.done || {};
+    pool = pool.filter(q => !done[q.id]);
+    if(!pool.length){ pool = QUESTIONS.filter(q => selectedLvl==="all" || q.level===selectedLvl); }
+  }
+  return pool.slice();
+}
+function startQuiz(resume){
+  queue = buildQueue(resume); idx = 0; score = 0; answered = 0; results = [];
+  levelStats = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+  queue.forEach(q=>{ if(q.type!=="written") levelStats[q.level].t++; });
+  $("home").classList.add("hidden"); $("results").classList.add("hidden"); $("quiz").classList.remove("hidden");
+  renderQ();
+}
+function cur(){ return queue[idx]; }
+function renderQ(){
+  const q = cur(); locked = false;
+  $("prog-fill").style.width = (idx/queue.length*100) + "%";
+  $("q-count").textContent = "سؤال " + (idx+1) + " من " + queue.length;
+  $("q-badge").innerHTML = '<span class="badge '+LVLCLS[q.level]+'">'+LVL[q.level]+'</span>';
+  $("q-score").textContent = "صح: " + score + " / " + answered;
+  $("q-stem").innerHTML = q.q + (q.ar ? '<span class="ar-note">'+q.ar+'</span>' : "");
+  $("q-hint").classList.remove("show"); $("q-hint").textContent = q.hint || "";
+  $("btn-hint").style.display = q.hint ? "" : "none";
+  const ex = $("q-explain"); ex.classList.remove("show","ok","no"); ex.innerHTML = "";
+  const mo = $("q-model"); mo.classList.remove("show"); mo.textContent = "";
+  $("btn-next").classList.add("hidden"); $("btn-finish").classList.add("hidden");
+  const body = $("q-body"); body.innerHTML = "";
+  if(q.type === "mcq"){
+    const box = document.createElement("div"); box.className = "opts";
+    q.options.forEach((op,i)=>{
+      const b = document.createElement("button"); b.className = "opt"; b.textContent = op;
+      b.addEventListener("click", ()=>answerMcq(i, b)); box.appendChild(b);
+    });
+    body.appendChild(box);
+  } else if(q.type === "tf"){
+    const box = document.createElement("div"); box.className = "tf";
+    [["True", true], ["False", false]].forEach(([label, val])=>{
+      const b = document.createElement("button"); b.className = "opt"; b.textContent = label;
+      b.addEventListener("click", ()=>answerTf(val, b)); box.appendChild(b);
+    });
+    body.appendChild(box);
+  } else if(q.type === "written"){
+    const ta = document.createElement("textarea"); ta.placeholder = "اكتب إجابتك هنا…";
+    body.appendChild(ta);
+    const b = document.createElement("button"); b.className = "btn"; b.textContent = "أظهر الإجابة النموذجية";
+    b.addEventListener("click", ()=>{
+      if(locked) return; locked = true;
+      mo.textContent = q.model; mo.classList.add("show");
+      ex.innerHTML = "<b>الشرح:</b> " + q.explain; ex.classList.add("show","ok");
+      b.disabled = true; showNav();
+    });
+    body.appendChild(b);
+  }
+}
+$("btn-hint").addEventListener("click", ()=>{ $("q-hint").classList.toggle("show"); });
+function markProgress(id, ok){
+  const p = loadProg(); p.done = p.done || {}; p.correct = p.correct || {};
+  p.done[id] = true; if(ok) p.correct[id] = true; saveProg(p);
+}
+function finishAnswer(ok){
+  answered++; if(ok) score++;
+  markProgress(cur().id, ok);
+  results.push({id:cur().id, ok:ok});
+  $("q-score").textContent = "صح: " + score + " / " + answered;
+  showNav();
+}
+function showNav(){
+  if(idx < queue.length-1){ $("btn-next").classList.remove("hidden"); }
+  else { $("btn-finish").classList.remove("hidden"); }
+}
+function answerMcq(i, btn){
+  if(locked) return; locked = true;
+  const q = cur(); const ok = (i === q.correct);
+  document.querySelectorAll("#q-body .opt").forEach((el, j)=>{
+    el.disabled = true;
+    if(j === q.correct) el.classList.add("correct");
+    if(j === i && !ok) el.classList.add("wrong");
+  });
+  const ex = $("q-explain");
+  ex.innerHTML = (ok ? "<b>✓ إجابة صحيحة.</b> " : "<b>✗ إجابة خاطئة.</b> الصح: <b>" + q.options[q.correct] + "</b><br>") + q.explain;
+  ex.classList.add("show", ok ? "ok" : "no");
+  finishAnswer(ok);
+}
+function answerTf(val, btn){
+  if(locked) return; locked = true;
+  const q = cur(); const ok = (val === q.correct);
+  document.querySelectorAll("#q-body .opt").forEach(el=>{
+    el.disabled = true;
+    const v = el.textContent === "True";
+    if(v === q.correct) el.classList.add("correct");
+    if(el === btn && !ok) el.classList.add("wrong");
+  });
+  const ex = $("q-explain");
+  ex.innerHTML = (ok ? "<b>✓ إجابة صحيحة.</b> " : "<b>✗ إجابة خاطئة.</b> الصح: <b>" + (q.correct ? "True" : "False") + "</b><br>") + q.explain;
+  ex.classList.add("show", ok ? "ok" : "no");
+  finishAnswer(ok);
+}
+$("btn-next").addEventListener("click", ()=>{ idx++; renderQ(); });
+$("btn-finish").addEventListener("click", showResults);
+function showResults(){
+  $("quiz").classList.add("hidden"); $("results").classList.remove("hidden");
+  const total = results.length || 1;
+  const pct = Math.round(score/total*100);
+  $("res-pct").textContent = pct + "%";
+  const ring = $("ring-fg");
+  ring.style.strokeDashoffset = 408 - (408*pct/100);
+  const p = loadProg(); if(p.best==null || pct > p.best){ p.best = pct; saveProg(p); }
+  let msg = pct>=90 ? "ممتاز! الموضوع ده بقى في جيبك." : pct>=70 ? "كويس جداً — راجع الغلطات وهتبقى ممتاز." : pct>=50 ? "بداية كويسة — راجع الشرح والغلطات وحاول تاني." : "محتاج مراجعة — ارجع للشرح في الملف وحاول تاني.";
+  $("res-line").innerHTML = "أجبت صح على <b>" + score + "</b> من <b>" + total + "</b> سؤال<br>" + msg;
+  let rows = "<tr><th>المستوى</th><th>صح</th><th>من</th></tr>";
+  const agg = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+  results.forEach(r=>{ const q = QUESTIONS.find(x=>x.id===r.id); if(!q) return; agg[q.level].t++; if(r.ok) agg[q.level].c++; });
+  ["easy","med","hard"].forEach(l=>{ if(agg[l].t) rows += "<tr><td>"+LVL[l]+"</td><td>"+agg[l].c+"</td><td>"+agg[l].t+"</td></tr>"; });
+  $("res-table").innerHTML = rows;
+}
+$("btn-retry").addEventListener("click", ()=>startQuiz(false));
+$("btn-home").addEventListener("click", ()=>{
+  $("results").classList.add("hidden"); $("home").classList.remove("hidden"); refreshHome();
+
+/* O.Nursing — QR-only protection: block copying, right-click, printing */
+document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+document.addEventListener("copy", function(e){ e.preventDefault(); });
+document.addEventListener("cut", function(e){ e.preventDefault(); });
+document.addEventListener("dragstart", function(e){ e.preventDefault(); });
+document.addEventListener("keydown", function(e){
+  if((e.ctrlKey || e.metaKey) && ["c","x","u","s","p","a"].indexOf(e.key.toLowerCase()) !== -1){ e.preventDefault(); }
+});
+});
+refreshHome();
+</script>
+</body>
+</html>
